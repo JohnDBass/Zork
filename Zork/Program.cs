@@ -7,17 +7,7 @@ using System.Threading.Tasks;
 namespace Zork
 {
     class Program
-    {
-        enum Commands
-        {
-            QUIT,
-            LOOK,
-            NORTH,
-            SOUTH,
-            EAST,
-            WEST,
-            UNKNOWN
-        }
+    {        
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
