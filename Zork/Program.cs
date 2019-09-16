@@ -70,8 +70,7 @@ namespace Zork
             (Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN);       
 
         private static bool Move(Commands command)
-        {
-            
+        {            
             bool canMove = true;
             switch (command)
             {
@@ -93,10 +92,8 @@ namespace Zork
                     canMove = false;
                     break;
             }
-
             return canMove;
         }
-
         
     }
 }
