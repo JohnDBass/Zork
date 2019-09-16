@@ -8,10 +8,21 @@ namespace Zork
 {
     class Program
     {
-        private static string[] Rooms =
-            {"Forest", "West of House", "Behind House", "Clearing", "Canyon View"};
+        private static string[,] Rooms = {
+            { "Rocky Trail", "South of House", "Canyon View" },
+            { "Forest", "West of House", "Behind house" },
+            { "Dense Woods", "North of House", "Clearing" },
+        };
 
-        private static int roomColumn;
+        private static (int Row, int Column) Location = (1, 1);
+
+        private static string CurrentRoom
+        {
+            get
+            {
+                return Rooms[Location.Row, Location.Column];
+            }
+        }
 
         private static List<Commands> Directions = new List<Commands>
         {
@@ -23,13 +34,12 @@ namespace Zork
 
         static void Main(string[] args)
         {
-            roomColumn = 1;
             Console.WriteLine("Welcome to Zork!");
-            Commands command = Commands.UNKNOWN;            
 
+            Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
-                Console.WriteLine(Rooms[roomColumn]);
+                Console.WriteLine(CurrentRoom);
                 Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
@@ -51,11 +61,7 @@ namespace Zork
                         if (Move(command) == false)
                         {
                             Console.WriteLine("The Way is shut!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("You moved " + (command) );
-                        }
+                        }                       
                         break;
 
                     default:
@@ -74,18 +80,20 @@ namespace Zork
             bool canMove = true;
             switch (command)
             {
-                case Commands.NORTH:
+                case Commands.NORTH when Location.Row > 0:
+                    Location.Row--;
                     break;
 
-                case Commands.SOUTH:
+                case Commands.SOUTH when Location.Row < Rooms.GetLength(0) - 1:
+                    Location.Row++;
                     break;
 
-                case Commands.EAST when roomColumn < Rooms.GetLength(0) - 1:
-                    roomColumn++;
+                case Commands.EAST when Location.Column < Rooms.GetLength(1) - 1:
+                    Location.Column++;
                     break;
 
-                case Commands.WEST when roomColumn > 0:
-                    roomColumn--;
+                case Commands.WEST when Location.Column > 0:
+                    Location.Column--;
                     break;
 
                 default:
