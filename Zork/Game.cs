@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Zork
-{
+{    
     public class Game
     {
         public World World { get; private set; }
@@ -53,7 +54,7 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        Directions direction = Enum.Parse<Directions>(command.ToString(), true);
+                        Directions direction = Enum.Parse(Directions, command.ToString(), true);
                         if (Player.Move(direction) == false)
                         {
                             Console.WriteLine("The way is shut!");

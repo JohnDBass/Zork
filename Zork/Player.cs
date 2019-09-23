@@ -18,11 +18,9 @@ namespace Zork
         public World World { get; }
 
         [JsonIgnore]
-
         public Room Location { get; private set; }
 
         [JsonIgnore]
-
         public string LocationName
         {
             get
