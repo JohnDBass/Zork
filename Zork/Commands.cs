@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Zork
 {
 
-    enum Commands
+    public enum Commands
     {
         QUIT,
         LOOK,
