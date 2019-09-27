@@ -24,6 +24,6 @@ namespace Zork
         private enum CommandLineArguments
         {
             GameFilename = 0
-        }        
+        }
     }
 }
