@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Reflecton;
+using System.Reflection;
 using System.Text;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -36,7 +36,7 @@ namespace Zork
         
         public static void Start(string gameFilename)
         {
-            if (!gameFilename.Exists(gameFilename))
+            if (!File.Exists(gameFilename))
             {
                 throw new FileNotFoundException("Expected file.", gameFilename);
             }
@@ -108,17 +108,17 @@ namespace Zork
 
         private void LoadScripts()
         {
-            foreach (string file in Directory.EnumeratedFiles(ScriptDirectory, ScriptFileExtension))
+            foreach (string file in Directory.EnumerateFiles(ScriptDirectory, ScriptFileExtension))
             {
                 try
                 {
-                    var scriptOptions = scriptOptions.Default.AddReferences(Assembly.GetExecutingAssembly());
-
+                    var scriptOptions = ScriptOptions.Default.AddReferences(Assembly.GetExecutingAssembly());
+#if (DEBUG)
                     scriptOptions = scriptOptions.WithEmitDebugInformation(true)
                                     .WithFilePath(new FileInfo(file).FullName)
                                     .WithFileEncoding(Encoding.UTF8);
-
-                    string script = file.ReadAllText(file);
+#endif
+                    string script = File.ReadAllText(file);
                     CSharpScript.RunAsync(script, scriptOptions).Wait();
                 }
                 catch (Exception ex)
@@ -157,7 +157,7 @@ namespace Zork
         private static readonly string ScriptFileExtension = "*.csx";
 
         [JsonProperty]
-        private string WElcomeMessage = null;
+        private string WelcomeMessage = null;
 
         private bool mIsRunning;
         private bool mIsRestarting;

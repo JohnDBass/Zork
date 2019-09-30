@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using Zork;
 
 string[] responses new string[]
@@ -17,4 +16,3 @@ var command = new Command("HELLO", new string[] { "HELLO", "HI", "HOWDY" },
     });
 
 Game.Instance.CommandManager.AddCommand(command);
-*/
