@@ -13,11 +13,11 @@ namespace Zork
         [Command("SOUTH", new string[] { "SOUTH", "S" })]
         public static void South(Game game, CommandContext commandContext) => Move(game, Directions.South);
 
-        [Command("EAST", new string[] { "NORTH", "E" })]
-        public static void East(Game game, CommandContext commandContext) => Move(game, Directions.West);
+        [Command("EAST", new string[] { "EAST", "E" })]
+        public static void East(Game game, CommandContext commandContext) => Move(game, Directions.East);
 
         [Command("WEST", new string[] { "WEST", "W" })]
-        public static void West(Game game, CommandContext commandContext) => Move(game, Directions.East);
+        public static void West(Game game, CommandContext commandContext) => Move(game, Directions.West);
 
         private static void Move(Game game, Directions direction)
         {

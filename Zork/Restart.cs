@@ -7,7 +7,7 @@ namespace Zork
     [CommandClass]
     public static class RestartCommand
     {
-        [Command("RESTART", "RESTART")]
+        [Command("RESTART", "R")]
         public static void Restart(Game game, CommandContext commandContext)
         {
             if (game.ConfirmAction("Are you sure you want to restart? "))
