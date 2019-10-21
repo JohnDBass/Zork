@@ -6,13 +6,7 @@ using System.Text;
 
 namespace Zork
 {
-    public enum Directions
-    {
-        North,
-        South,
-        East,
-        West
-    }
+    
     public class Player
     {
         public int Moves = 0;

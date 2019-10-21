@@ -5,7 +5,7 @@ using System.Text;
 namespace Zork
 {
     [CommandClass]
-    public static class MovementCommands
+    public static class Movement
     {
         [Command("NORTH", new string[] { "NORTH", "N" })]
         public static void North(Game game, CommandContext commandContext) => Move(game, Directions.North);
