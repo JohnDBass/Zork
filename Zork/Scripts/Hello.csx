@@ -1,7 +1,7 @@
 ﻿using System;
 using Zork;
 
-string[] responses new string[]
+string[] responses = new string[]
 {
     "Good day.",
     "Nice weather we've been having lately.",

@@ -19,7 +19,6 @@ namespace Zork
         public CommandAttribute(string commandName, string verb) :
             this(commandName, new string[] { verb })
         {
-
         }
 
         public CommandAttribute(string commandName, string[] verbs)
